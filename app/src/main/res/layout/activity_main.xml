@@ -7,19 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/frame_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        ></FrameLayout>
-
     <!--
     app:menu —  File menu resource để hiển thị các mục điều hướng
     cùng với icon và text.
     app:itemBackground —  Áp dụng background color cho bottom navigation.
     app:itemTextColor —  Màu text của bottom navigation item.
     app:itemIconTint — Màu icon của bottom navigation item.-->
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
@@ -34,5 +28,36 @@
         app:menu="@menu/navigationbutton" />
 
 
+
+    <SearchView
+        android:id="@+id/SearchView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="Tìm Kiếm" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="243dp"
+        android:orientation="vertical">
+
+        <!-- ViewSwitcher with three views first is ImageView, second is a layout in which we have two TextView's
+         and third is a layout in which we have two Button's -->
+        <ViewFlipper
+            android:id="@+id/simpleViewFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </ViewFlipper>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="255dp"
+            android:layout_gravity="center"
+            android:src="@drawable/slide1" />
+
+
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
