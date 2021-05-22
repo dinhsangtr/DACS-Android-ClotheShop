@@ -1,4 +1,4 @@
-package com.example.shop;
+package com.doan.shop;
 
 import org.junit.Test;
 
