@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toolbar;
 import android.widget.ViewFlipper;
-
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -44,21 +44,25 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionViewFlipper();
+      //  ActionViewFlipper();
+
     }
 
     //slider
+    //doan nay ko xai toi, de tham khao thoi
+    /*
     private void ActionViewFlipper(){
-        ArrayList<String> slider = new ArrayList<>();
-        slider.add("https://p.w3layouts.com/demos_new/template_demo/20-06-2017/elite_shoppy-demo_Free/143933984/web/images/banner1.jpg");
-        slider.add("https://p.w3layouts.com/demos_new/template_demo/20-06-2017/elite_shoppy-demo_Free/143933984/web/images/banner2.jpg");
-        slider.add("https://p.w3layouts.com/demos_new/template_demo/20-06-2017/elite_shoppy-demo_Free/143933984/web/images/banner3.jpg");
-        slider.add("https://p.w3layouts.com/demos_new/template_demo/20-06-2017/elite_shoppy-demo_Free/143933984/web/images/banner4.jpg");
-
-        for (int i = 0; i< slider.size(); i++){
+        //ArrayList<String> slider = new ArrayList<>();
+        //slider.add("https://p.w3layouts.com/demos_new/template_demo/20-06-2017/elite_shoppy-demo_Free/143933984/web/images/banner1.jpg");
+        //slider.add("https://p.w3layouts.com/demos_new/template_demo/20-06-2017/elite_shoppy-demo_Free/143933984/web/images/banner2.jpg");
+        //slider.add("https://p.w3layouts.com/demos_new/template_demo/20-06-2017/elite_shoppy-demo_Free/143933984/web/images/banner3.jpg");
+        //slider.add("https://p.w3layouts.com/demos_new/template_demo/20-06-2017/elite_shoppy-demo_Free/143933984/web/images/banner4.jpg");
+        int[] arrayHinh = {R.drawable.banner1, R.drawable.banner2, R.drawable.banner3};
+        for (int i = 0; i< arrayHinh.length; i++){
             ImageView imageView = new ImageView(getContext());
-            Picasso.with(getContext()).load(slider.get(i)).into(imageView);
+            //Picasso.with(getContext()).load(arrayHinh[i]).into(imageView);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setImageResource(arrayHinh[i]);
             viewFlipper.addView(imageView);
         }
         //set thoi gian chay
@@ -69,19 +73,33 @@ public class HomeFragment extends Fragment {
         viewFlipper.setInAnimation(animation_slide_in);
         viewFlipper.setOutAnimation(animation_slide_out);
     }
-    //anhs xaj
-    private void Mapping(){
-        recyclerView = (RecyclerView) recyclerView.findViewById(R.id.recyclerview);
-        recyclerView1 = (RecyclerView) recyclerView1.findViewById(R.id.recyclerview1);
-        viewFlipper = (ViewFlipper) viewFlipper.findViewById(R.id.viewflipper);
-
-    }
+    */
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
         recyclerView = view.findViewById(R.id.recyclerview);
+        recyclerView1 = view.findViewById(R.id.recyclerview1);
+        viewFlipper = view.findViewById(R.id.viewflipper);
+
+        int[] arrayHinh = {R.drawable.banner1, R.drawable.banner2, R.drawable.banner3};
+        for (int i = 0; i< arrayHinh.length; i++){
+            ImageView imageView = new ImageView(getContext());
+            //Picasso.with(getContext()).load(arrayHinh[i]).into(imageView);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setImageResource(arrayHinh[i]);
+            viewFlipper.addView(imageView);
+        }
+        //set thoi gian chay
+        viewFlipper.setFlipInterval(5000);
+        viewFlipper.startFlipping();
+        Animation animation_slide_in = AnimationUtils.loadAnimation(getContext(), R.anim.slide_in_right);
+        Animation animation_slide_out = AnimationUtils.loadAnimation(getContext(), R.anim.slide_out_right);
+        viewFlipper.setInAnimation(animation_slide_in);
+        viewFlipper.setOutAnimation(animation_slide_out);
+
+
+
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(mLayoutManager);
