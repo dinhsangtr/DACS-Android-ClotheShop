@@ -16,7 +16,7 @@
         android:clickable="true"
         android:elevation="5dp"
         android:foreground="?attr/selectableItemBackground"
-        card_view:cardCornerRadius="10dp">
+        card_view:cardCornerRadius="5dp">
 
 
         <RelativeLayout
@@ -33,6 +33,7 @@
 
             <TextView
                 android:id="@+id/title"
+                android:text="Tên sản phẩm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/thumbnail"
@@ -45,6 +46,7 @@
 
             <TextView
                 android:id="@+id/price"
+                android:text="Giá"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title"
