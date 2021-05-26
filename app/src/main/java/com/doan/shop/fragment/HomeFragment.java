@@ -60,8 +60,13 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView1;
     private ListView listView;
 
+    //sp noi bat
     private ArrayList<SanPham> mangSP;
     private sanphamAdapter sanphamAdapter;//khuon mau
+    //sp moi
+    private ArrayList<SanPham> mangSP1;
+    private sanphamAdapter sanphamAdapter1;//khuon mau
+
 
     public HomeFragment() {
     }
@@ -86,10 +91,10 @@ public class HomeFragment extends Fragment {
         recyclerView1 = view.findViewById(R.id.recyclerview1);
         viewFlipper = view.findViewById(R.id.viewflipper);
 
-        getDuLieuSP();
+        getDuLieuSP_NB();
+        getDuLieuSP_M();
         //kiem tra ket noi
         if (CheckConnection.haveNetworkConnection(getActivity().getApplicationContext())) {
-
             //Slider
             int[] arrayHinh = {R.drawable.banner1, R.drawable.banner2, R.drawable.banner3};
             for (int i = 0; i < arrayHinh.length; i++) {
@@ -113,8 +118,7 @@ public class HomeFragment extends Fragment {
             mangSP = new ArrayList<>();
             sanphamAdapter = new sanphamAdapter(getActivity().getApplicationContext(), mangSP);
             recyclerView.setHasFixedSize(true);
-            //recyclerView.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 2));
-            //
+
             RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
             recyclerView.setLayoutManager(mLayoutManager);
             recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(8), true));
@@ -123,6 +127,19 @@ public class HomeFragment extends Fragment {
             //
             recyclerView.setNestedScrollingEnabled(false);
 
+            //view sp noi bat
+            //mapping
+            mangSP1 = new ArrayList<>();
+            sanphamAdapter1 = new sanphamAdapter(getActivity().getApplicationContext(), mangSP1);
+            recyclerView1.setHasFixedSize(true);
+
+            RecyclerView.LayoutManager mLayoutManager1 = new GridLayoutManager(getActivity(), 2);
+            recyclerView1.setLayoutManager(mLayoutManager1);
+            recyclerView1.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(8), true));
+            recyclerView1.setItemAnimator(new DefaultItemAnimator());
+            recyclerView1.setAdapter(sanphamAdapter1);
+            //
+            recyclerView1.setNestedScrollingEnabled(false);
         } else {
             CheckConnection.Show_Toast(getActivity().getApplicationContext(), "Vui lòng kiểm tra lại kết nối!");
         }
@@ -134,10 +151,10 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-
-    private void getDuLieuSP() {
+    //Get San Pham Noi Bat
+    private void getDuLieuSP_NB() {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.URL_SP_TC, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.URL_SP_NoiBat, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 if (response != null) {
@@ -149,9 +166,6 @@ public class HomeFragment extends Fragment {
                     String kich_thuoc = "";
                     Double gia_ban = 0.0;
                     Double gia_khuyen_mai = 0.0;
-                    int trang_thai = 0;
-                    int san_pham_moi = 0;
-                    int noi_bat = 0;
                     String hinh_anh_sp = "";
                     int id_mau_sac = 0;
                     String ten_mau = "";
@@ -169,9 +183,6 @@ public class HomeFragment extends Fragment {
                             kich_thuoc = jsonObject.getString("kich_thuoc");
                             gia_ban = jsonObject.getDouble("gia_ban");
                             gia_khuyen_mai = jsonObject.getDouble("gia_khuyen_mai");
-                            trang_thai = jsonObject.getInt("trang_thai");
-                            san_pham_moi = jsonObject.getInt("san_pham_moi");
-                            noi_bat = jsonObject.getInt("noi_bat");
                             hinh_anh_sp = jsonObject.getString("hinh_anh_sp");
                             id_mau_sac = jsonObject.getInt("id_mau_sac");
                             ten_mau = jsonObject.getString("ten_mau");
@@ -183,8 +194,7 @@ public class HomeFragment extends Fragment {
                                     id_thuong_hieu, mo_ta,
                                     kich_thuoc, gia_ban,
                                     gia_khuyen_mai,
-                                    trang_thai, san_pham_moi,
-                                    noi_bat, Server.URL_ImgSanPham + hinh_anh_sp,
+                                    Server.URL_ImgSanPham + hinh_anh_sp,
                                     id_mau_sac, ten_mau, code,
                                     hinh_anh_sp_ms));
                             sanphamAdapter.notifyDataSetChanged();
@@ -203,6 +213,67 @@ public class HomeFragment extends Fragment {
         requestQueue.add(jsonArrayRequest);
     }
 
+    //Get San Pham Moi
+    private void getDuLieuSP_M() {
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.URL_SP_Moi, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                if (response != null) {
+                    int id_san_pham = 0;
+                    String ten_san_pham = "";
+                    int id_danh_muc = 0;
+                    int id_thuong_hieu = 0;
+                    String mo_ta = "";
+                    String kich_thuoc = "";
+                    Double gia_ban = 0.0;
+                    Double gia_khuyen_mai = 0.0;
+                    String hinh_anh_sp = "";
+                    int id_mau_sac = 0;
+                    String ten_mau = "";
+                    String code = "";
+                    String hinh_anh_sp_ms = "";
+
+                    for (int i = 0; i < response.length(); i++) {
+                        try {
+                            JSONObject jsonObject = response.getJSONObject(i);
+                            id_san_pham = jsonObject.getInt("id_san_pham");
+                            ten_san_pham = jsonObject.getString("ten_san_pham");
+                            id_danh_muc = jsonObject.getInt("id_danh_muc");
+                            id_thuong_hieu = jsonObject.getInt("id_thuong_hieu");
+                            mo_ta = jsonObject.getString("mo_ta");
+                            kich_thuoc = jsonObject.getString("kich_thuoc");
+                            gia_ban = jsonObject.getDouble("gia_ban");
+                            gia_khuyen_mai = jsonObject.getDouble("gia_khuyen_mai");
+                            hinh_anh_sp = jsonObject.getString("hinh_anh_sp");
+                            id_mau_sac = jsonObject.getInt("id_mau_sac");
+                            ten_mau = jsonObject.getString("ten_mau");
+                            code = jsonObject.getString("code");
+                            hinh_anh_sp_ms = jsonObject.getString("hinh_anh_sp_ms");
+
+                            mangSP1.add(new SanPham(id_san_pham,
+                                    ten_san_pham, id_danh_muc,
+                                    id_thuong_hieu, mo_ta,
+                                    kich_thuoc, gia_ban,
+                                    gia_khuyen_mai,
+                                    Server.URL_ImgSanPham + hinh_anh_sp,
+                                    id_mau_sac, ten_mau, code,
+                                    hinh_anh_sp_ms));
+                            sanphamAdapter1.notifyDataSetChanged();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(jsonArrayRequest);
+    }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 

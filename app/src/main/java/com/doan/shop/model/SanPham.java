@@ -12,9 +12,6 @@ public class SanPham {
     public String kich_thuoc;
     public double gia_ban;
     public double gia_khuyen_mai;
-    public int trang_thai;
-    public int san_pham_moi;
-    public int noi_bat;
     public String hinh_anh_sp;
     public int id_mau_sac;
     public String ten_mau;
@@ -25,13 +22,11 @@ public class SanPham {
     }
 
     public SanPham(int id_san_pham, String ten_san_pham,
-                   int id_danh_muc,
-                   int id_thuong_hieu, String mo_ta,
-                   String kich_thuoc, double gia_ban,
-                   double gia_khuyen_mai,
-                   int trang_thai, int san_pham_moi,
-                   int noi_bat, String hinh_anh_sp,
-                   int id_mau_sac, String ten_mau, String code,
+                   int id_danh_muc, int id_thuong_hieu,
+                   String mo_ta, String kich_thuoc,
+                   double gia_ban, double gia_khuyen_mai,
+                   String hinh_anh_sp, int id_mau_sac,
+                   String ten_mau, String code,
                    String hinh_anh_sp_ms) {
         this.id_san_pham = id_san_pham;
         this.ten_san_pham = ten_san_pham;
@@ -41,9 +36,6 @@ public class SanPham {
         this.kich_thuoc = kich_thuoc;
         this.gia_ban = gia_ban;
         this.gia_khuyen_mai = gia_khuyen_mai;
-        this.trang_thai = trang_thai;
-        this.san_pham_moi = san_pham_moi;
-        this.noi_bat = noi_bat;
         this.hinh_anh_sp = hinh_anh_sp;
         this.id_mau_sac = id_mau_sac;
         this.ten_mau = ten_mau;
@@ -113,30 +105,6 @@ public class SanPham {
 
     public void setGia_khuyen_mai(double gia_khuyen_mai) {
         this.gia_khuyen_mai = gia_khuyen_mai;
-    }
-
-    public int getTrang_thai() {
-        return trang_thai;
-    }
-
-    public void setTrang_thai(int trang_thai) {
-        this.trang_thai = trang_thai;
-    }
-
-    public int getSan_pham_moi() {
-        return san_pham_moi;
-    }
-
-    public void setSan_pham_moi(int san_pham_moi) {
-        this.san_pham_moi = san_pham_moi;
-    }
-
-    public int getNoi_bat() {
-        return noi_bat;
-    }
-
-    public void setNoi_bat(int noi_bat) {
-        this.noi_bat = noi_bat;
     }
 
     public String getHinh_anh_sp() {

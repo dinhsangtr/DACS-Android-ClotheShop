@@ -5,5 +5,9 @@ public class Server {
     public static String port = "8099";
 
     public static String URL_ImgSanPham = "http://" + localhost + ":" + port + "/ShopSpringMVC/assets/user/images/sanpham/";
-    public static String URL_SP_TC = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/san-pham-TC";
+    //trang chu
+    public static String URL_SP_NoiBat = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/san-pham-noi-bat";
+    public static String URL_SP_Moi = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/san-pham-moi";
+
+
 }
