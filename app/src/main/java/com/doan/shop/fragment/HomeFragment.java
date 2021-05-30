@@ -1,71 +1,74 @@
 package com.doan.shop.fragment;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
-import android.widget.ViewFlipper;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
 import com.doan.shop.R;
-import com.doan.shop.adapter.sanphamAdapter;
+import com.doan.shop.adapter.SanPhamAdapter;
+import com.doan.shop.adapter.SliderAdapter;
 import com.doan.shop.model.SanPham;
+import com.doan.shop.model.Slider;
 import com.doan.shop.util.CheckConnection;
-import com.doan.shop.util.MyApplication;
+import com.doan.shop.util.CustomVolleyRequest;
 import com.doan.shop.util.Server;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import me.relex.circleindicator.CircleIndicator;
 
 public class HomeFragment extends Fragment {
 
     private static final String TAG = HomeFragment.class.getSimpleName();
-
-    private Toolbar toolbar;
-    private ViewFlipper viewFlipper;
-    private RecyclerView recyclerView;
-    private RecyclerView recyclerView1;
-    private ListView listView;
-
+    //slider
+    private LinearLayout slideDotspanel;
+    private CircleIndicator circleIndicator;
+    private ViewPager viewPager;
+    private ImageView[] dots;
+    private int dotscount;
+    private Timer timer;
+    //
+    private RecyclerView recyclerView; //noi bat
+    private RecyclerView recyclerView1; //moi
+    private RequestQueue rq;
+    private List<Slider> listSlider;
+    private SliderAdapter sliderAdapter;
     //sp noi bat
     private ArrayList<SanPham> mangSP;
-    private sanphamAdapter sanphamAdapter;//khuon mau
+    private SanPhamAdapter sanphamAdapter;//khuon mau
     //sp moi
     private ArrayList<SanPham> mangSP1;
-    private sanphamAdapter sanphamAdapter1;//khuon mau
+    private SanPhamAdapter sanphamAdapter1;//khuon mau
+
 
 
     public HomeFragment() {
@@ -78,7 +81,6 @@ public class HomeFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,34 +91,44 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView1 = view.findViewById(R.id.recyclerview1);
-        viewFlipper = view.findViewById(R.id.viewflipper);
-
+        circleIndicator = view.findViewById(R.id.circleIndicator);
         getDuLieuSP_NB();
         getDuLieuSP_M();
         //kiem tra ket noi
         if (CheckConnection.haveNetworkConnection(getActivity().getApplicationContext())) {
+
             //Slider
-            int[] arrayHinh = {R.drawable.banner1, R.drawable.banner2, R.drawable.banner3};
-            for (int i = 0; i < arrayHinh.length; i++) {
-                ImageView imageView = new ImageView(getContext());
-                //Picasso.with(getContext()).load(arrayHinh[i]).into(imageView);
-                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                imageView.setImageResource(arrayHinh[i]);
-                viewFlipper.addView(imageView);
-            }
-            //set thoi gian chay
-            viewFlipper.setFlipInterval(5000);
-            viewFlipper.startFlipping();
-            Animation animation_slide_in = AnimationUtils.loadAnimation(getContext(), R.anim.slide_in_right);
-            Animation animation_slide_out = AnimationUtils.loadAnimation(getContext(), R.anim.slide_out_right);
-            viewFlipper.setInAnimation(animation_slide_in);
-            viewFlipper.setOutAnimation(animation_slide_out);
-            //end//Slider
+            rq = Volley.newRequestQueue(getActivity().getApplicationContext());
+            listSlider = new ArrayList<>();
+            viewPager = (ViewPager) view.findViewById(R.id.view_pager);
+            slideDotspanel = (LinearLayout) view.findViewById(R.id.SliderDots);
+            getDuLieuSlider();
+
+            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    for(int i = 0; i< dotscount; i++){
+                        dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.banner2));
+                    }
+                    dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.banner1));
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+                }
+            });
+
+
 
             //view sp noi bat
             //mapping
             mangSP = new ArrayList<>();
-            sanphamAdapter = new sanphamAdapter(getActivity().getApplicationContext(), mangSP);
+            sanphamAdapter = new SanPhamAdapter(getActivity().getApplicationContext(), mangSP);
             recyclerView.setHasFixedSize(true);
 
             RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
@@ -128,9 +140,8 @@ public class HomeFragment extends Fragment {
             recyclerView.setNestedScrollingEnabled(false);
 
             //view sp noi bat
-            //mapping
             mangSP1 = new ArrayList<>();
-            sanphamAdapter1 = new sanphamAdapter(getActivity().getApplicationContext(), mangSP1);
+            sanphamAdapter1 = new SanPhamAdapter(getActivity().getApplicationContext(), mangSP1);
             recyclerView1.setHasFixedSize(true);
 
             RecyclerView.LayoutManager mLayoutManager1 = new GridLayoutManager(getActivity(), 2);
@@ -143,12 +154,100 @@ public class HomeFragment extends Fragment {
         } else {
             CheckConnection.Show_Toast(getActivity().getApplicationContext(), "Vui lòng kiểm tra lại kết nối!");
         }
-
-
-        //
-
-
         return view;
+    }
+
+    //Slider
+    private void getDuLieuSlider() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, Server.URL_Slider, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                if (response != null) {
+                    for (int i = 0; i < response.length(); i++) {
+                        Slider slider = new Slider();
+                        try {
+                            JSONObject jsonObject = response.getJSONObject(i);
+                            slider.setId_slider(jsonObject.getInt("id_slider"));
+                            slider.setLink(jsonObject.getString("link"));
+                            slider.setMo_ta_1(jsonObject.getString("mo_ta_1"));
+                            slider.setMo_ta_2(jsonObject.getString("mo_ta_2"));
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        listSlider.add(slider);
+                    }
+                    sliderAdapter = new SliderAdapter(listSlider, getActivity().getApplicationContext());
+                    viewPager.setAdapter(sliderAdapter);
+
+                    circleIndicator.setViewPager(viewPager);
+                    sliderAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
+
+                    dotscount = sliderAdapter.getCount();
+                    dots = new ImageView[dotscount];
+
+                    autoSlideImage(dotscount);
+
+                    for(int i = 0; i < dotscount; i++){
+
+                        dots[i] = new ImageView(getActivity().getApplicationContext());
+                        dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.banner2));
+
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                        params.setMargins(8, 0, 8, 0);
+
+                        slideDotspanel.addView(dots[i], params);
+
+                    }
+                    dots[0].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.banner1));
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        CustomVolleyRequest.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsonArrayRequest);
+    }
+
+    private void autoSlideImage(int dotscount){
+        if (listSlider == null || listSlider.isEmpty() || viewPager == null){
+            return;
+        }
+
+        if(timer == null){
+            timer = new Timer();
+        }
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                new Handler(Looper.getMainLooper()).post(new Runnable() { //
+                    @Override
+                    public void run() {
+                        int currentItem = viewPager.getCurrentItem();
+                        int totalItem = dotscount - 1;
+                        if (currentItem < totalItem){
+                            currentItem ++;
+                            viewPager.setCurrentItem(currentItem);
+                        }else{
+                            viewPager.setCurrentItem(0);
+                        }
+
+                    }
+                });
+            }
+        }, 500, 3000);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (timer != null){
+            timer.cancel();
+            timer = null;
+        }
     }
 
     //Get San Pham Noi Bat
@@ -317,6 +416,5 @@ public class HomeFragment extends Fragment {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
-
 
 }

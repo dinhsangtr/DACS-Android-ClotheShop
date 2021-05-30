@@ -1,12 +1,8 @@
 package com.doan.shop.activity;
 
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -14,12 +10,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.doan.shop.fragment.OrderFragment;
+import com.doan.shop.fragment.CartFragment;
+import com.doan.shop.fragment.CategoryFragment;
 import com.doan.shop.R;
 import com.doan.shop.fragment.UserFragment;
 import com.doan.shop.fragment.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.doan.shop.fragment.HelpFragment;
+import com.doan.shop.fragment.NotiFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,10 +32,9 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-       loadFragment(new HomeFragment());
+        loadFragment(new HomeFragment());
 
     }
-
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -46,17 +42,21 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.nav_home:
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                     return true;
-                case R.id.nav_order:
-                    fragment = new OrderFragment();
+                case R.id.nav_category:
+                    fragment = new CategoryFragment();
                     loadFragment(fragment);
                     return true;
-                case R.id.nav_help:
-                    fragment = new HelpFragment();
+                case R.id.nav_cart:
+                    fragment = new CartFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.nav_noti:
+                    fragment = new NotiFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.nav_user:

@@ -2,9 +2,14 @@
     <string name="app_name">shop</string>
 
     <string name="title_shop">Trang chủ</string>
-    <string name="title_order">Danh mục</string>
+    <string name="title_category">Danh mục</string>
+    <string name="title_cart">Giỏ hàng</string>
+    <string name="title_noti">Thông báo</string>
     <string name="title_user">Tài khoản</string>
-    <string name="title_help">Trợ giúp</string>
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="skip">Bỏ qua</string>
+
+    <string name="danh_muc">Tên danh mục</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
