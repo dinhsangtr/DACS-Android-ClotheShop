@@ -18,9 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shop">
 
-
+        <activity android:name=".activity.MainActivity"/>
         <activity
-            android:name="com.doan.shop.activity.MainActivity">
+            android:name="com.doan.shop.activity.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
