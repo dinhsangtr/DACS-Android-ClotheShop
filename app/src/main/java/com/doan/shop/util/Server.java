@@ -12,6 +12,13 @@ public class Server {
     public static String URL_Slider = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/slider";
 
     //Danh Muc
+    public static String URL_ImgDMucCha = "http://" + localhost + ":" + port + "/ShopSpringMVC/assets/user/images/danhmuc/";
     public static String URL_DMucCha = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/danh-muc-cha";
+    public static String URL_DMucCon = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/danh-muc/";
 
+    //Gio Hang
+
+    //Thong Bao
+
+    //User
 }

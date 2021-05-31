@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.doan.shop.R;
 import com.doan.shop.fragment.HomeFragment;
-import com.doan.shop.fragment.CategoryFragment;
+import com.doan.shop.fragment.Category_Pr_Fragment;
 import com.doan.shop.fragment.CartFragment;
 import com.doan.shop.fragment.NotiFragment;
 import com.doan.shop.fragment.UserFragment;
@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ActionBar toolbar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-       loadFragment(new HomeFragment());
+        loadFragment(new HomeFragment());
 
     }
 
@@ -50,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.nav_category:
-                    fragment = new CategoryFragment();
+                    fragment = new Category_Pr_Fragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.nav_cart:
