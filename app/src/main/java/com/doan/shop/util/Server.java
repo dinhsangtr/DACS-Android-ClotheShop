@@ -15,7 +15,9 @@ public class Server {
     public static String URL_ImgDMucCha = "http://" + localhost + ":" + port + "/ShopSpringMVC/assets/user/images/danhmuc/";
     public static String URL_DMucCha = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/danh-muc-cha";
     public static String URL_DMucCon = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/danh-muc/";
-
+    public static String URL_SP = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/san-pham-theo-loai/";
+    public static String URL_SPTheoLoai = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/san-pham-theo-loai?id=";
+    public static String URL_SPLienQuan = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/san-pham-lien-quan";
     //Gio Hang
 
     //Thong Bao

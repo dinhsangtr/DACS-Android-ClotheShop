@@ -1,5 +1,6 @@
 package com.doan.shop.fragment;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,7 +30,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.doan.shop.R;
-import com.doan.shop.adapter.SanPhamAdapter;
+import com.doan.shop.activity.ChiTietSPActivity;
+import com.doan.shop.adapter.SanPhamTCAdapter;
 import com.doan.shop.adapter.SliderAdapter;
 import com.doan.shop.model.SanPham;
 import com.doan.shop.model.Slider;
@@ -46,7 +49,7 @@ import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SanPhamTCAdapter.ItemClickListener{
 
     private static final String TAG = HomeFragment.class.getSimpleName();
     //slider
@@ -56,18 +59,19 @@ public class HomeFragment extends Fragment {
     private ImageView[] dots;
     private int dotscount;
     private Timer timer;
+    private List<Slider> listSlider;
+    private SliderAdapter sliderAdapter;
     //
     private RecyclerView recyclerView; //noi bat
     private RecyclerView recyclerView1; //moi
     private RequestQueue rq;
-    private List<Slider> listSlider;
-    private SliderAdapter sliderAdapter;
+
     //sp noi bat
     private ArrayList<SanPham> mangSP;
-    private SanPhamAdapter sanphamAdapter;//khuon mau
+    private SanPhamTCAdapter sanphamAdapter;//khuon mau
     //sp moi
     private ArrayList<SanPham> mangSP1;
-    private SanPhamAdapter sanphamAdapter1;//khuon mau
+    private SanPhamTCAdapter sanphamAdapter1;//khuon mau
 
 
 
@@ -92,22 +96,24 @@ public class HomeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView1 = view.findViewById(R.id.recyclerview1);
         circleIndicator = view.findViewById(R.id.circleIndicator);
-        getDuLieuSP_NB();
-        getDuLieuSP_M();
+
+
+
         //kiem tra ket noi
         if (CheckConnection.haveNetworkConnection(getActivity().getApplicationContext())) {
-
+            getDuLieuSP_NB();
+            getDuLieuSP_M();
             //Slider
             rq = Volley.newRequestQueue(getActivity().getApplicationContext());
             listSlider = new ArrayList<>();
             viewPager = (ViewPager) view.findViewById(R.id.view_pager);
             slideDotspanel = (LinearLayout) view.findViewById(R.id.SliderDots);
+
             getDuLieuSlider();
 
             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
                 }
 
                 @Override
@@ -123,12 +129,10 @@ public class HomeFragment extends Fragment {
                 }
             });
 
-
-
             //view sp noi bat
             //mapping
             mangSP = new ArrayList<>();
-            sanphamAdapter = new SanPhamAdapter(getActivity().getApplicationContext(), mangSP);
+            sanphamAdapter = new SanPhamTCAdapter(getActivity().getApplicationContext(), mangSP, this);
             recyclerView.setHasFixedSize(true);
 
             RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
@@ -141,7 +145,7 @@ public class HomeFragment extends Fragment {
 
             //view sp noi bat
             mangSP1 = new ArrayList<>();
-            sanphamAdapter1 = new SanPhamAdapter(getActivity().getApplicationContext(), mangSP1);
+            sanphamAdapter1 = new SanPhamTCAdapter(getActivity().getApplicationContext(), mangSP1, this);
             recyclerView1.setHasFixedSize(true);
 
             RecyclerView.LayoutManager mLayoutManager1 = new GridLayoutManager(getActivity(), 2);
@@ -154,6 +158,7 @@ public class HomeFragment extends Fragment {
         } else {
             CheckConnection.Show_Toast(getActivity().getApplicationContext(), "Vui lòng kiểm tra lại kết nối!");
         }
+
         return view;
     }
 
@@ -372,6 +377,27 @@ public class HomeFragment extends Fragment {
             }
         });
         requestQueue.add(jsonArrayRequest);
+    }
+
+    @Override
+    public void onItemClick(SanPham sanPham) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getActivity(), ChiTietSPActivity.class);
+                intent.putExtra("thongtinsanpham", sanPham);
+                intent.putExtra("idSP", sanPham.getId_san_pham());
+                startActivity(intent);
+            }
+        });
+        thread.start();
+
+
+        long sleep = (long) (Math.random() * 1000L);
+        try {
+            Thread.sleep(sleep);
+        } catch (Exception exc) {
+        }
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

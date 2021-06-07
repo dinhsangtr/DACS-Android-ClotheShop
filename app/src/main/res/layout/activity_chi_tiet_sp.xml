@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/frame_chitiet">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.ChiTietSPActivity"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarCTSP_Act"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/bgBottomNavigation">
+        <TextView
+            android:id="@+id/txtToolBarSP_Act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chi tiết sản phẩm"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="20sp"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+        android:id="@+id/CrollLayoutSP_Act"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.HomeFragment"
+           >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/imgSP"
+                android:layout_width="match_parent"
+                android:layout_height="555dp"
+                android:contentDescription="Hình ảnh sản phẩm"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test"
+                tools:ignore="MissingConstraints"
+                android:background="@drawable/custom_imagesp" />
+
+            <TextView
+                android:id="@+id/txtTenSP"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Ten San Pham"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:id="@+id/txtGia"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:text="100.000"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/txtGiaKM"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:text="100.000"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#938D8D"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Mô tả sản phẩm"
+                    android:paddingTop="5dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/txtMota"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Áo Thun Nam In Dạ Quang Tinh Vân MTS 1055 in Sky Map phía sau lưng và  hình in bản đồ các vì sao mặt trước."
+                    android:paddingTop="5dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:textSize="20sp"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#938D8D"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bạn có thể thích"
+                    android:paddingTop="5dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewSPLQ"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_margin="10dp">
+
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="75dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <Button
+            android:id="@+id/btnAddCart"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="Them vao gio"
+            android:textAllCaps="false"
+            android:background="@drawable/custom_btn_ctsp"
+            android:backgroundTint="@null"
+            app:backgroundTint="@null"
+            />
+
+        <Button
+            android:id="@+id/btnTT"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:text="Thanh toan"
+            android:textAllCaps="false"
+            android:background="@drawable/custom_btn_ctsp"
+            android:backgroundTint="@null"
+            app:backgroundTint="@null"/>
+    </LinearLayout>
+</RelativeLayout>

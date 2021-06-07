@@ -1,22 +1,25 @@
 package com.doan.shop.fragment;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,8 +27,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.doan.shop.R;
+import com.doan.shop.activity.MainActivity;
+import com.doan.shop.activity.SanPhamActivity;
+import com.doan.shop.activity.SanPham_LMActivity;
 import com.doan.shop.adapter.DanhMucAdapter;
-import com.doan.shop.adapter.DanhMucChaAdapter;
 import com.doan.shop.model.DanhMuc;
 import com.doan.shop.util.CheckConnection;
 import com.doan.shop.util.Server;
@@ -37,6 +42,8 @@ import java.util.ArrayList;
 
 
 public class Category_Fragment extends Fragment implements DanhMucAdapter.ItemClickListener{
+
+    private static final String TAG = Category_Fragment.class.getSimpleName();
     private static final String  ARG_PARAM1 = "p1";
     private static final String  ARG_PARAM2 = "p2";
 
@@ -47,6 +54,8 @@ public class Category_Fragment extends Fragment implements DanhMucAdapter.ItemCl
     private DanhMucAdapter danhMucAdapter;
     private RecyclerView recyclerviewDMucCon;
     private ImageView imageDanhMuc;
+    private Toolbar toolbarDMuc;
+    private TextView txtToolBarTitle;
 
     public Category_Fragment() {
     }
@@ -71,13 +80,33 @@ public class Category_Fragment extends Fragment implements DanhMucAdapter.ItemCl
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_category_, container, false);
+        View view = inflater.inflate(R.layout.fragment_ch_category, container, false);
         recyclerviewDMucCon = view.findViewById(R.id.recyclerviewDMucCon);
         imageDanhMuc = getActivity().findViewById(R.id.imageDanhMuc);
         Toolbar toolbarDMuc = (Toolbar)view.findViewById(R.id.toolbarDanhMuc);
-        toolbarDMuc.setTitle(mParam2);
+        toolbarDMuc.setTitle("");
+        txtToolBarTitle = view.findViewById(R.id.txtToolBarTitle);
+        txtToolBarTitle.setText(mParam2);
 
-        getDuLieuDMucCon();
+        final Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                getDuLieuDMucCon();
+            }
+        });
+        thread.start();
+
+
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbarDMuc);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbarDMuc.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ((AppCompatActivity)getActivity()).onBackPressed();
+            }
+        });
 
         if (CheckConnection.haveNetworkConnection(getActivity().getApplicationContext())) {
             listDMuc = new ArrayList<>();
@@ -103,16 +132,8 @@ public class Category_Fragment extends Fragment implements DanhMucAdapter.ItemCl
     }
 
 
-    @Override
-    public void onItemClick(DanhMuc danhMuc) {
-        Fragment fragment = SanPhamFragment.newInstance(danhMuc.getId_danh_muc());
-        FragmentTransaction ft = getActivity()
-                .getSupportFragmentManager()
-                .beginTransaction();
-        ft.replace(R.id.layoutDMCon, fragment, "sp");
-        ft.addToBackStack(null);
-        ft.commit();
-    }
+
+
 
     private void getDuLieuDMucCon() {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
@@ -145,9 +166,42 @@ public class Category_Fragment extends Fragment implements DanhMucAdapter.ItemCl
             }
         });
         requestQueue.add(jsonArrayRequest);
+        requestQueue.cancelAll(TAG);
     }
 
+    @Override
+    public void onItemClick(DanhMuc danhMuc) {
 
+        //Toast.makeText(getActivity(), "text", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getActivity(), SanPham_LMActivity.class);
+        intent.putExtra("idloaiSP", danhMuc.getId_danh_muc());
+        intent.putExtra("tenLoaiSP", danhMuc.getTen_danh_muc());
+        startActivity(intent);
+
+        /*final Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                Fragment fragment = SanPhamFragment.newInstance(String.valueOf(danhMuc.getId_danh_muc()), danhMuc.getTen_danh_muc());
+                FragmentTransaction ft = requireActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction();
+                ft.replace(R.id.layoutDMucCon, fragment, "sp");
+                ft.addToBackStack(null);
+                ft.commit();
+
+            }
+        });
+        thread.start();*/
+
+
+        /*
+        long sleep = (long)(Math.random() * 1000L);
+        try {
+            Thread.sleep(sleep);
+        } catch (Exception exc) {}*/
+    }
 
 
     //design

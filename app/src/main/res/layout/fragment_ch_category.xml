@@ -2,18 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutDMucCon"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.Category_Fragment"
     android:orientation="vertical"
-    android:id="@+id/layoutDMCon">
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarDanhMuc"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/bgBottomNavigation"
-        app:title="Danh Mục">
+        >
+
+    <TextView
+        android:id="@+id/txtToolBarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Danh Mục"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textSize="20sp"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -21,7 +31,8 @@
         android:id="@+id/CrollLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.HomeFragment">
+        tools:context=".fragment.HomeFragment"
+        android:layout_marginBottom="54dp">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerviewDMucCon"
                 android:layout_width="match_parent"

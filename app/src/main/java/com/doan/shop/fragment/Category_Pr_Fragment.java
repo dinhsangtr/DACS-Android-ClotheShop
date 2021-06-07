@@ -25,6 +25,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.doan.shop.R;
 import com.doan.shop.adapter.DanhMucChaAdapter;
+import com.doan.shop.adapter.SanPhamAdapter;
 import com.doan.shop.model.DanhMucCha;
 import com.doan.shop.util.CheckConnection;
 import com.doan.shop.util.Server;
@@ -33,9 +34,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class Category_Pr_Fragment extends Fragment implements DanhMucChaAdapter.ItemClickListener {
+    private static final String TAG =Category_Pr_Fragment.class.getSimpleName();
     private ArrayList<DanhMucCha> listDMucCha;
     private DanhMucChaAdapter dmcAdapter;
     private RecyclerView recyclerviewDMC;
@@ -55,7 +58,15 @@ public class Category_Pr_Fragment extends Fragment implements DanhMucChaAdapter.
         recyclerviewDMC = view.findViewById(R.id.recyclerviewDMC);
         imageViewDMC = getActivity().findViewById(R.id.imageViewDMC);
         test = (TextView) view.findViewById(R.id.test);
-        getDuLieuDMucCha();
+
+        final Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                getDuLieuDMucCha();
+            }
+        });
+        thread.start();
+
         //Danh muc cha
         if (CheckConnection.haveNetworkConnection(getActivity().getApplicationContext())) {
             listDMucCha = new ArrayList<>();
@@ -76,16 +87,6 @@ public class Category_Pr_Fragment extends Fragment implements DanhMucChaAdapter.
         } else {
             CheckConnection.Show_Toast(getActivity().getApplicationContext(), "Vui lòng kiểm tra lại kết nối!");
         }
-
-        /*
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "test", Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
-
 
         return view;
     }
@@ -122,17 +123,37 @@ public class Category_Pr_Fragment extends Fragment implements DanhMucChaAdapter.
             }
         });
         requestQueue.add(jsonArrayRequest);
+        requestQueue.cancelAll(TAG);
     }
+
 
     @Override
     public void onItemClick(DanhMucCha danhMucCha) {
-        Fragment fragment = Category_Fragment.newInstance(String.valueOf(danhMucCha.getId_danh_muc_cha()), danhMucCha.getTen_danh_muc_cha());
-        FragmentTransaction ft = getActivity()
-                .getSupportFragmentManager()
-                .beginTransaction();
-        ft.replace(R.id.layout_DanhMucCha, fragment, "categoty");
-        ft.addToBackStack(null);
-        ft.commit();
+
+        final Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                Fragment fragment = Category_Fragment.newInstance(String.valueOf(danhMucCha.getId_danh_muc_cha()), danhMucCha.getTen_danh_muc_cha());
+                FragmentTransaction ft = requireActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction();
+                ft.replace(R.id.layout_DanhMucCha, fragment, "categoty");
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
+        thread.start();
+
+
+
+        /*
+        long sleep = (long) (Math.random() * 1000L);
+        try {
+            Thread.sleep(sleep);
+        } catch (
+                Exception exc) {
+        }*/
     }
 
 
@@ -169,6 +190,7 @@ public class Category_Pr_Fragment extends Fragment implements DanhMucChaAdapter.
                 }
             }
         }
+
     }
 
     /**

@@ -2,18 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/R1layout"
+    android:id="@+id/layoutDanhMucCon"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
     android:orientation="horizontal"
     android:weightSum="10"
     android:gravity="center"
-    android:background="@drawable/custom_imagedm">
+    android:background="@drawable/custom_imagedm"
+    android:clickable="true"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="96dp"
         android:layout_weight="2"
         android:layout_margin="20dp">
 
@@ -23,8 +26,9 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:focusable="true"
-            android:scaleType="center"
-            android:src="@drawable/icons8_school_director_96px" />
+            android:scaleType="centerInside"
+
+            android:src="@drawable/error" />
     </LinearLayout>
 
     <LinearLayout

@@ -16,18 +16,26 @@ import com.doan.shop.fragment.Category_Pr_Fragment;
 import com.doan.shop.fragment.CartFragment;
 import com.doan.shop.fragment.NotiFragment;
 import com.doan.shop.fragment.UserFragment;
+import com.doan.shop.model.GioHang;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActionBar toolbar;
+    public static ArrayList<GioHang> listGioHang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (listGioHang != null) {
+
+        } else {
+            listGioHang = new ArrayList<>();
+        }
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -36,13 +44,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.nav_home:
                     fragment = new HomeFragment();
                     loadFragment(fragment);
@@ -69,10 +76,23 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void loadFragment(Fragment fragment) {
+
         // load fragment
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_container, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+                long sleep = (long) (Math.random() * 1000L);
+                try {
+                    Thread.sleep(sleep);
+                } catch (Exception exc) {
+                }
+            }
+        });
+        thread.start();
     }
 }

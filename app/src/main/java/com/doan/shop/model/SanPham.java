@@ -1,9 +1,10 @@
 package com.doan.shop.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class SanPham {
+public class SanPham implements Serializable {
     public int id_san_pham;
     public String ten_san_pham;
     public int id_danh_muc;
