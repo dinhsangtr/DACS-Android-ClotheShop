@@ -1,68 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="10"
     tools:context="com.doan.shop.activity.IntroActivity">
-
-    <ImageView
-        android:id="@+id/imageViewintro1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="-5dp"
-        android:layout_marginEnd="-3dp"
-        android:src="@drawable/logoshop"
-        />
 
     <TextView
         android:id="@+id/textViewIntro"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center"
-        android:text="CLOTHES SHOP"
+        android:text="@string/welcome"
         android:textColor="@color/teal_700"
         android:textSize="20dp"
         android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="bottom|center"
+        android:paddingBottom="50dp">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
 
+            <ImageView
+                android:id="@+id/imageViewintro1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ss" />
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnDangNhap"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_btn"
-        android:backgroundTint="@null"
-        app:backgroundTint="@null"
-        android:layout_below="@+id/textViewIntro"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="520dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="15dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="top|center"
+        android:orientation="vertical"
+        android:paddingTop="100dp">
 
-        android:text="@string/dang_nhap"
-        android:textAllCaps="false"
-        android:textSize="16sp"
-        tools:ignore="MissingPrefix" />
+        <Button
+            android:id="@+id/btnDangNhap"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_press"
+            android:backgroundTint="@null"
+            android:text="@string/dang_nhap"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:backgroundTint="@null"
+            tools:ignore="MissingPrefix" />
 
-    <TextView
-        android:id="@+id/btnSkip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnDangNhap"
-        android:layout_centerHorizontal="true"
-        android:text="@string/skip"/>
-
-</RelativeLayout>
+        <TextView
+            android:id="@+id/btnSkip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/skip" />
+    </LinearLayout>
+</LinearLayout>

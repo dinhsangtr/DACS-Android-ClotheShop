@@ -195,12 +195,13 @@
             android:id="@+id/btnAddCart"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:text="Them vao gio"
+            android:text="Thêm vào giỏ"
+            android:textSize="16sp"
             android:textAllCaps="false"
-            android:background="@drawable/custom_btn_ctsp"
+            android:background="@drawable/btn_press_addcart"
             android:backgroundTint="@null"
             app:backgroundTint="@null"
             />
@@ -209,13 +210,15 @@
             android:id="@+id/btnTT"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
             android:layout_weight="1"
-            android:text="Thanh toan"
+            android:text="Thanh toán"
+            android:textSize="16sp"
             android:textAllCaps="false"
-            android:background="@drawable/custom_btn_ctsp"
+            android:background="@drawable/btn_press_addcart"
             android:backgroundTint="@null"
-            app:backgroundTint="@null"/>
+            app:backgroundTint="@null"
+            />
     </LinearLayout>
 </RelativeLayout>

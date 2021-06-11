@@ -20,11 +20,15 @@
         android:theme="@style/Theme.Shop"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-        <activity android:name=".activity.ChiTietSPActivity"></activity>
+        <activity android:name=".activity.ThanhToanActivity"></activity>
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.ChiTietSPActivity" />
         <activity android:name=".activity.SanPham_LMActivity" />
-        <activity android:name=".activity.SanPhamActivity" />
-        <activity android:name=".activity.IntroActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

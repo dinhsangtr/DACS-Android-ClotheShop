@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/shape"
+    android:backgroundTint="@null"
+    android:gravity="center"
+    android:orientation="vertical"
+    app:backgroundTint="@null">
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="match_parent"
+        android:gravity="top|center"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Đổi mật khẩu"
+            android:textColor="@color/teal_700"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtOldPw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:hint="Mật khẩu cũ"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edtNewPw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:hint="Mật khẩu mới"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edtReNewPw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:hint="Nhập lại mật khẩu mới"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnOKPw"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_press_1"
+        android:backgroundTint="@null"
+        android:text="Đồng ý"
+        app:backgroundTint="@null"
+        android:textAllCaps="false"
+        android:layout_marginBottom="20dp"/>
+</LinearLayout>

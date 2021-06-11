@@ -1,7 +1,7 @@
 package com.doan.shop.util;
 
 public class Server {
-    public static String localhost = "192.168.1.6";
+    public static String localhost = "192.168.1.7";
     public static String port = "8099";
 
     //Trang Chu
@@ -23,4 +23,9 @@ public class Server {
     //Thong Bao
 
     //User
+    public static String URL_CheckUser = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/usercheck";
+    public static String URL_CheckUserBool = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/usercheckbool";
+    public static String URL_UpdateInfo = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/updateinfo";
+    public static String URL_InsertUser = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/insertuser";
+    public static String URL_ChangePW = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/changepw";
 }

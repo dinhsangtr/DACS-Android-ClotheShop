@@ -15,7 +15,6 @@
         android:background="@color/bgBottomNavigation"
         android:gravity="center">
         <TextView
-            android:id="@+id/txtToolBarSP_Act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -39,7 +38,13 @@
         <ListView
             android:id="@+id/lvCart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:divider="@color/white"
+            android:dividerHeight="5.0sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            >
         </ListView>
 
     </FrameLayout>
@@ -113,7 +118,7 @@
             android:layout_weight="3"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/custom_btn_ctsp"
+            android:background="@drawable/btn_press"
             android:backgroundTint="@null"
             android:text="Thanh toán"
             android:textAllCaps="false"

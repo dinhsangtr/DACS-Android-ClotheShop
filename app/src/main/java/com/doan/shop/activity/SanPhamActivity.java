@@ -42,7 +42,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SanPhamActivity extends AppCompatActivity {
-
+/*
     private static final String ARG_PARAM1 = "p1";
     private static final String ARG_PARAM2 = "p2";
 
@@ -260,8 +260,11 @@ public class SanPhamActivity extends AppCompatActivity {
     /**
      * Converting dp to pixel
      */
+    /*
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
+
+    */
 }

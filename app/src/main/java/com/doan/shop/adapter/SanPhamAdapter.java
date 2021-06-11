@@ -22,7 +22,8 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHolder> {
+public class SanPhamAdapter /*extends RecyclerView.Adapter<SanPhamAdapter.ViewHolder> */{
+    /*
     Context context;
     ArrayList<SanPham> arrayListSanPham;
     private SanPhamAdapter.ItemClickListener clickListener;
@@ -89,5 +90,5 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     public interface ItemClickListener {
         public void onItemClick(SanPham sanPham);
     }
-
+*/
 }

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -41,7 +42,7 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class ChiTietSPActivity extends AppCompatActivity implements SanPhamLQAdapter.ItemClickListener{
+public class ChiTietSPActivity extends AppCompatActivity implements SanPhamLQAdapter.ItemClickListener {
     Toolbar toolbarCTSP_Act;
     ImageView imgSP;
     TextView txtTenSP, txtGia, txtGiaKM, txtMota;
@@ -67,7 +68,7 @@ public class ChiTietSPActivity extends AppCompatActivity implements SanPhamLQAda
     String ten_mau = "";
     String code = "";
     String hinh_anh_sp_ms = "";
-    SanPham sanPham = (SanPham) getIntent().getSerializableExtra("thongtinsanpham");
+    //SanPham sanPham = (SanPham) getIntent().getSerializableExtra("thongtinsanpham");
     //
 
     public ChiTietSPActivity() {
@@ -102,50 +103,42 @@ public class ChiTietSPActivity extends AppCompatActivity implements SanPhamLQAda
     }
 
     private void EventButton() {
+        SanPham sanPham = (SanPham) getIntent().getSerializableExtra("thongtinsanpham");
         btnAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MainActivity.listGioHang.size() > 0){
+                if (MainActivity.listGioHang.size() > 0) {
                     boolean exist = false;
-                    for(int i=0; i<MainActivity.listGioHang.size(); i++){
-                        if (MainActivity.listGioHang.get(i).getSanpham().getId_san_pham() == id_san_pham){
-                            MainActivity.listGioHang.get(i)
-                                    .setSoluong(MainActivity.listGioHang.get(i).getSoluong() + 1);
-                            MainActivity.listGioHang.get(i)
-                                    .setTonggia(gia_khuyen_mai * MainActivity.listGioHang.get(i).getSoluong());
+                    Log.d("So luong sp trong gio: ", "" + listSanPham.size());
+                    for (int i = 0; i < MainActivity.listGioHang.size(); i++) {
+                        if (MainActivity.listGioHang.get(i).getSanpham().getId_san_pham() == id_san_pham) {
+                            MainActivity.listGioHang.get(i).setSoluong(MainActivity.listGioHang.get(i).getSoluong() + 1);
+                            MainActivity.listGioHang.get(i).setTonggia(MainActivity.listGioHang.get(i).getTonggia() + gia_khuyen_mai);
+                            Log.d("SL_S: ", String.valueOf(MainActivity.listGioHang.get(i).getSoluong() + 1));
+                            Log.d("Gia_S: ", String.valueOf(MainActivity.listGioHang.get(i).getTonggia() + gia_khuyen_mai));
                             exist = true;
                         }
                     }
 
-                    if (exist == false){
+                    if (exist == false) {
                         int soluong = 1;
-                        double giamoi = soluong*gia_khuyen_mai;
+                        double giamoi = soluong * gia_khuyen_mai;
                         MainActivity.listGioHang.add(new GioHang(soluong, giamoi, sanPham));
                     }
-                }else{
+                } else {
                     int soluong = 1;
-                    double giamoi = soluong*gia_khuyen_mai;
+                    double giamoi = soluong * gia_khuyen_mai;
                     MainActivity.listGioHang.add(new GioHang(soluong, giamoi, sanPham));
+                    Log.d("SL: ", String.valueOf(giamoi));
                 }
+                Toast.makeText(getApplicationContext(), "Đã thêm vào giỏ!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-                //Chuyen man hinh/*
-                /*
-                Thread thread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.frame_container, fragment);
-                        transaction.addToBackStack(null);
-                        transaction.commit();
-
-                        long sleep = (long) (Math.random() * 1000L);
-                        try {
-                            Thread.sleep(sleep);
-                        } catch (Exception exc) {
-                        }
-                    }
-                });
-                thread.start();*/
+        btnTT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnTT.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -178,7 +171,7 @@ public class ChiTietSPActivity extends AppCompatActivity implements SanPhamLQAda
     }
 
     private void GetThongTinSanPham() {
-
+        SanPham sanPham = (SanPham) getIntent().getSerializableExtra("thongtinsanpham");
         id_san_pham = sanPham.getId_san_pham();
         ten_san_pham = sanPham.getTen_san_pham();
         id_danh_muc = sanPham.getId_danh_muc();

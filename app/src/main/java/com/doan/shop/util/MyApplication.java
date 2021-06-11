@@ -18,6 +18,7 @@ public class MyApplication extends Application {
     public void onCreate(){
         super.onCreate();
         mInstance = this;
+        DataLocalManager.init(getApplicationContext());
     }
 
     public static synchronized MyApplication getInstance() {
