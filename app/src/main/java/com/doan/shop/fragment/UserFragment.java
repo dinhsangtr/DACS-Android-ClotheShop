@@ -129,13 +129,13 @@ public class UserFragment extends Fragment {
                 EditText edtAddress = (EditText) dialog.findViewById(R.id.edtAddress);
                 EditText edtEmail = (EditText) dialog.findViewById(R.id.edtEmail);
                 EditText edtPhone = (EditText) dialog.findViewById(R.id.edtPhone);
-/*
+
                 edtHoTen.setText(MainActivity.user.get(0).getHo_ten());
                 edtBirth.setText(getDate1(Long.parseLong(MainActivity.user.get(0).getNgay_sinh())));
                 edtAddress.setText(MainActivity.user.get(0).getDia_chi());
                 edtEmail.setText(MainActivity.user.get(0).getEmail());
                 edtPhone.setText(MainActivity.user.get(0).getSdt());
-*/
+
                 edtBirth.addTextChangedListener(new TextWatcher() {
                     private String current = "";
                     private String yyyymmdd = "YYYYMMDD";

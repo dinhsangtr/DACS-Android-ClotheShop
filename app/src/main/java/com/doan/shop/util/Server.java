@@ -19,6 +19,8 @@ public class Server {
     public static String URL_SPTheoLoai = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/san-pham-theo-loai?id=";
     public static String URL_SPLienQuan = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/san-pham-lien-quan";
     //Gio Hang
+    public static String URL_AddBill = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/addbill";
+    public static String URL_AddBillDetail = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/addbilldetail";
 
     //Thong Bao
 
@@ -28,4 +30,7 @@ public class Server {
     public static String URL_UpdateInfo = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/updateinfo";
     public static String URL_InsertUser = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/insertuser";
     public static String URL_ChangePW = "http://" + localhost + ":" + port + "/ShopSpringMVC/api/changepw";
+
+
+    //
 }

@@ -16,7 +16,6 @@
     <string name="title_user">Tài khoản</string>
 
 
-
     <!-- Activity ///////////////////////////////////////////////////////// -->
     <!-- A - Intro -->
     <string name="welcome">Welcome!</string>
@@ -61,6 +60,28 @@
 
     <!-- A - ThanhToan -->
     <string name="toolbarthanhtoan">Thanh Toán</string>
+    <string name="tvTT">Thông tin giao hàng</string>
+    <string name="tvTT1">Phương thức thanh toán</string>
+    <string name="tvDeli">Phương thức vận chuyển</string>
+    <string name="tvSale">Mã khuyến mãi</string>
+    <string name="btnTT">Thanh Toán</string>
+    <string name="rdoCOD">Thanh toán bằng tiền mặt khi nhân hàng</string>
+    <string name="rdoZalo">Ví ZaloPay</string>
+    <string name="rdoAtm">Thẻ ATM nội địa/ Internet Banking</string>
+    <string name="rdoShip">Giao hàng tiêu chuẩn : 15.000đ</string>
+    <string name="address2">Địa chỉ GH:</string>
+    <string name="txtCode">Nhập mã:</string>
+    <string name="txtCh">Xác nhận</string>
+    <string name="txtGiaTri">Giá trị đơn hàng</string>
+    <string name="txtTien">Thành tiền:</string>
+    <string name="txtShip">Phí vận chuyển:</string>
+    <string name="txtSale">Giảm giá:</string>
+    <string name="txtTongTien">Tổng số tiền</string>
+    <string name="sale">0đ</string>
+    <string name="ship">15.000đ</string>
+
+    <!-- A - ChiTietDonHang -->
+    <string name="toolbarCTDH">Chi tiết đơn hàng</string>
 
 
 
@@ -102,8 +123,6 @@
     <string name="btnlogout">Đăng xuất</string>
 
 
-
-
     <!-- Dialog ///////////////////////////////////////////////////////// -->
     <!-- D - dangnhap -->
     <string name="please">Bạn vui lòng đăng nhập</string>
@@ -122,8 +141,6 @@
     <string name="oldpw">Mật khẩu cũ</string>
     <string name="newpw">Mật khẩu mới</string>
     <string name="renewpe">Nhập lại mật khẩu mới</string>
-
-
 
 
     <!-- Row //////////////////////////////////////////////////////////// -->

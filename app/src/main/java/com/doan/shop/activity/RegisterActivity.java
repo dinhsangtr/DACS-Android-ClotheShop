@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         Mapping();
 
         btnSkipRegister.setOnClickListener(v -> finish());
-
+/*
         //test
         txtUsername.setText("dinhsang");
         txtHoTen.setText("dinhsang");
@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtPassword.setText("123");
         txtRePassword.setText("123");
         //end-test
-
+*/
         btnDangKy.setOnClickListener(v -> {
             if (txtUsername.getText().length() != 0
                     && txtHoTen.getText().length() != 0

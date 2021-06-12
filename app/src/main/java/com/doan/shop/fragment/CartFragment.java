@@ -20,6 +20,7 @@ import com.doan.shop.R;
 import com.doan.shop.activity.ChiTietSPActivity;
 import com.doan.shop.activity.LoginActivity;
 import com.doan.shop.activity.MainActivity;
+import com.doan.shop.activity.ThanhToanActivity;
 import com.doan.shop.adapter.GioHangAdapter;
 import com.doan.shop.model.SanPham;
 import com.doan.shop.util.CheckConnection;
@@ -31,12 +32,12 @@ import java.text.DecimalFormat;
  * Use the {@link CartFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CartFragment extends Fragment implements GioHangAdapter.ItemClickListener{
+public class CartFragment extends Fragment implements GioHangAdapter.ItemClickListener {
     ListView lvCart;
     TextView txtThongBaoCart;
     TextView txtGhiChuCart;
     static TextView txtTongGiaCart;
-    Button btnThanhToanCart;
+    Button btnTTThanhToanCart;
 
     GioHangAdapter gioHangAdapter;
 
@@ -100,17 +101,17 @@ public class CartFragment extends Fragment implements GioHangAdapter.ItemClickLi
     }
 
     private void EventButton() {
-        btnThanhToanCart.setOnClickListener(new View.OnClickListener() {
+        btnTTThanhToanCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MainActivity.listGioHang.size() > 0){
+                if (MainActivity.listGioHang.size() > 0) {
                     if (MainActivity.user.size() <= 0) {
                         Dialog dialog = new Dialog(getContext());
                         dialog.setTitle("Thông báo");
                         dialog.setCancelable(true);
                         dialog.setContentView(R.layout.dialog_dangnhap);
 
-                        Button btnDNhap = (Button)dialog.findViewById(R.id.btnDNhap);
+                        Button btnDNhap = (Button) dialog.findViewById(R.id.btnDNhap);
                         btnDNhap.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -122,9 +123,10 @@ public class CartFragment extends Fragment implements GioHangAdapter.ItemClickLi
 
                         dialog.show();
                     } else {
-                        Intent intent = new Intent();
+                        Intent intent = new Intent(getActivity().getApplicationContext(), ThanhToanActivity.class);
+                        startActivity(intent);
                     }
-                }else{
+                } else {
                     CheckConnection.Show_Toast(getActivity(), "Giỏ hàng của bạn chưa có sản phẩm");
                 }
 
@@ -186,9 +188,9 @@ public class CartFragment extends Fragment implements GioHangAdapter.ItemClickLi
     private void Mapping(View view) {
         lvCart = (ListView) view.findViewById(R.id.lvCart);
         txtThongBaoCart = (TextView) view.findViewById(R.id.txtThongBaoCart);
-        txtGhiChuCart = (TextView) view.findViewById(R.id.txtGhiChuCart);
+        //txtGhiChuCart = (TextView) view.findViewById(R.id.txtGhiChuCart);
         txtTongGiaCart = (TextView) view.findViewById(R.id.txtTongGiaCart);
-        btnThanhToanCart = (Button) view.findViewById(R.id.btnThanhToanCart);
+        btnTTThanhToanCart = (Button) view.findViewById(R.id.btnTTThanhToanCart);
     }
 
     private void CheckData() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -38,8 +39,7 @@
             android:hint="@string/name"
             android:inputType="text"
             android:selectAllOnFocus="true"
-            android:textSize="18sp"
-            android:autofillHints="" />
+            android:textSize="18sp"/>
 
         <EditText
             android:id="@+id/edtBirth"
@@ -50,8 +50,7 @@
             android:hint="@string/dateofbirth"
             android:inputType="date"
             android:selectAllOnFocus="true"
-            android:textSize="18sp"
-            android:autofillHints="" />
+            android:textSize="18sp"/>
 
         <EditText
             android:id="@+id/edtAddress"
@@ -62,8 +61,7 @@
             android:hint="@string/address"
             android:inputType="text"
             android:selectAllOnFocus="true"
-            android:textSize="18sp"
-            android:autofillHints="" />
+            android:textSize="18sp"/>
 
         <EditText
             android:id="@+id/edtEmail"
@@ -74,8 +72,7 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="true"
-            android:textSize="18sp"
-            android:autofillHints="" />
+            android:textSize="18sp"/>
 
         <EditText
             android:id="@+id/edtPhone"
@@ -86,8 +83,7 @@
             android:hint="@string/phone1"
             android:inputType="phone"
             android:selectAllOnFocus="true"
-            android:textSize="18sp"
-            android:autofillHints="" />
+            android:textSize="18sp" />
     </LinearLayout>
 
     <Button
