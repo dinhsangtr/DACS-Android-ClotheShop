@@ -1,5 +1,6 @@
 package com.doan.shop.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -170,6 +171,7 @@ public class CartFragment extends Fragment implements GioHangAdapter.ItemClickLi
         });
     }
 
+    @SuppressLint("SetTextI18n")
     public static void EventUtil() {
         double tongtien = 0;
         for (int i = 0; i < MainActivity.listGioHang.size(); i++) {
@@ -204,13 +206,10 @@ public class CartFragment extends Fragment implements GioHangAdapter.ItemClickLi
 
     @Override
     public void onItemClick(SanPham sanPham) {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(getActivity(), ChiTietSPActivity.class);
-                intent.putExtra("thongtinsanpham", sanPham);
-                startActivity(intent);
-            }
+        Thread thread = new Thread(() -> {
+            Intent intent = new Intent(getActivity(), ChiTietSPActivity.class);
+            intent.putExtra("thongtinsanpham", sanPham);
+            startActivity(intent);
         });
         thread.start();
 
@@ -219,6 +218,7 @@ public class CartFragment extends Fragment implements GioHangAdapter.ItemClickLi
         try {
             Thread.sleep(sleep);
         } catch (Exception exc) {
+            exc.printStackTrace();
         }
     }
 }

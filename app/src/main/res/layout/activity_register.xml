@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:facebook="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,6 +24,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/contentImg3"
                 android:src="@drawable/ss" />
         </androidx.cardview.widget.CardView>
     </LinearLayout>
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="Đăng ký"
+            android:text="@string/signin1"
             android:textColor="@color/teal_700"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -53,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+            android:autofillHints=""
             android:hint="@string/prompt_email"
             android:inputType="text"
             android:selectAllOnFocus="true"
@@ -64,7 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:hint="Họ tên"
+            android:autofillHints=""
+            android:hint="@string/name"
             android:inputType="text"
             android:selectAllOnFocus="true"
             android:textSize="18sp" />
@@ -75,7 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:hint="Số điện thoại"
+            android:autofillHints=""
+            android:hint="@string/phone"
             android:inputType="phone"
             android:selectAllOnFocus="true"
             android:textSize="18sp" />
@@ -86,6 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+            android:autofillHints=""
             android:hint="@string/prompt_password"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
@@ -99,6 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+            android:autofillHints=""
             android:hint="@string/re_password"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
@@ -122,7 +127,7 @@
             android:background="@drawable/btn_press"
             android:backgroundTint="@null"
             android:enabled="true"
-            android:text="Tiếp theo"
+            android:text="@string/go_on1"
             android:textAllCaps="false"
             android:textSize="15sp"
             app:backgroundTint="@null" />
@@ -150,7 +155,7 @@
             android:layout_gravity="left"
             android:layout_marginStart="20dp"
             android:layout_marginTop="100dp"
-            android:text="Trở lại đăng nhập"
+            android:text="@string/back"
             tools:ignore="RtlHardcoded" />
 
     </LinearLayout>

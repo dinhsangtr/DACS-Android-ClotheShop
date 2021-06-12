@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Thông tin của bạn"
+            android:text="@string/toolbaruser"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Bạn chưa đăng nhập"
+                android:text="@string/checkuser"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -79,7 +79,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Tên đăng nhập:"
+                    android:text="@string/username"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -103,7 +103,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Họ tên:"
+                    android:text="@string/name1"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -127,7 +127,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Ngày sinh:"
+                    android:text="@string/birth1"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -151,7 +151,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Địa chỉ:"
+                    android:text="@string/address1"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -175,7 +175,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Email:"
+                    android:text="@string/email1"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -199,7 +199,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Số điện thoại:"
+                    android:text="@string/phone2"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -222,7 +222,7 @@
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/btn_press"
                 android:backgroundTint="@null"
-                android:text="Chỉnh sửa thông tin"
+                android:text="@string/btnupdate"
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 app:backgroundTint="@null"
@@ -237,7 +237,7 @@
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/btn_press"
                 android:backgroundTint="@null"
-                android:text="Đổi mật khẩu"
+                android:text="@string/btnchangepw"
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 app:backgroundTint="@null"
@@ -252,7 +252,7 @@
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/btn_press"
                 android:backgroundTint="@null"
-                android:text="Đăng xuất"
+                android:text="@string/btnlogout"
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 app:backgroundTint="@null"

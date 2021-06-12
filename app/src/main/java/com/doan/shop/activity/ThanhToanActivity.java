@@ -13,4 +13,8 @@ public class ThanhToanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanh_toan);
     }
+
+    private void Mapping(){
+        
+    }
 }

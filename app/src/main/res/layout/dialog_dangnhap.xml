@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:text="Bạn vui lòng đăng nhập"/>
+        android:text="@string/please"/>
     <Button
         android:id="@+id/btnDNhap"
         android:layout_width="200dp"
@@ -23,5 +23,5 @@
         android:background="@drawable/btn_press_1"
         android:backgroundTint="@null"
         app:backgroundTint="@null"
-        android:text="Đăng nhập"/>
+        android:text="@string/dangnhap2"/>
 </LinearLayout>

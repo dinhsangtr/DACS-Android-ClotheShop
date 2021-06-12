@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="NỔI BẬT"
+                    android:text="@string/hot"
                     android:textColor="@color/purple_700"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -90,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="HÀNG MỚI VỀ"
+                    android:text="@string/new_pro"
                     android:textColor="@color/purple_700"
                     android:textSize="20sp"
                     android:textStyle="bold" />

@@ -1,29 +1,153 @@
 <resources>
     <string name="app_name">SS Clothes</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings related to login -->
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 
+
+    <!-- MENU -->
     <string name="title_shop">Trang chủ</string>
     <string name="title_category">Danh mục</string>
     <string name="title_cart">Giỏ hàng</string>
     <string name="title_noti">Thông báo</string>
     <string name="title_user">Tài khoản</string>
+
+
+
+    <!-- Activity ///////////////////////////////////////////////////////// -->
+    <!-- A - Intro -->
+    <string name="welcome">Welcome!</string>
+    <string name="contentImg1">logo</string>
     <string name="dang_nhap">Đăng nhập</string>
     <string name="skip">Bỏ qua</string>
 
-    <string name="danh_muc">Tên danh mục</string>
-    <string name="danh_muc_sp">Danh mục sản phẩm</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- Strings related to login -->
+    <!-- A - Login -->
+    <string name="contentImg2">logo</string>
+    <string name="dang_nhap1">Đăng nhập</string>
     <string name="prompt_email">Tên đăng nhập</string>
     <string name="prompt_password">Mật khẩu</string>
-    <string name="re_password">Nhập lại mật khẩu</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">Welcome!</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="go_on">Tiếp theo</string>
     <string name="sign">Bạn chưa có tài khoản?</string>
     <string name="signin">Đăng ký!</string>
     <string name="skiplogin">Trở về</string>
+
+    <!-- A - Register -->
+    <string name="contentImg3">logo</string>
+    <string name="signin1">Đăng ký</string>
+    <string name="name">Họ tên</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="re_password">Nhập lại mật khẩu</string>
+    <string name="go_on1">Tiếp theo</string>
+    <string name="back">Trở lại đăng nhập</string>
+
+    <!-- A - Main -->
+
+    <!-- A - SanPham -->
+    <string name="toolbardanhmuc">Danh Mục</string>
+
+    <!-- A - ChiTietSP -->
+    <string name="toolbardetailsp">Chi tiết sản phẩm</string>
+    <string name="contentImg4">Hình ảnh sản phẩm</string>
+    <string name="name_pro">Ten San Pham</string>
+    <string name="des_pro">Mô tả sản phẩm</string>
+    <string name="exp_detail_pro">Áo Thun Nam In Dạ Quang Tinh Vân MTS 1055 in Sky Map phía sau lưng và  hình in bản đồ các vì sao mặt trước.</string>
+    <string name="like_pro">Bạn có thể thích</string>
+    <string name="add_cart">Thêm vào giỏ</string>
+    <string name="checkbill">Thanh toán</string>
+
+    <!-- A - ThanhToan -->
+    <string name="toolbarthanhtoan">Thanh Toán</string>
+
+
+
+
+    <!-- Fragment ///////////////////////////////////////////////////////// -->
+    <!-- F - home -->
+    <string name="new_pro">HÀNG MỚI VỀ</string>
+    <string name="hot">NỔI BẬT</string>
+
+    <!-- F - pr_category _DanhMucCha-->
+    <string name="toolbardmcha">Danh mục sản phẩm</string>
+
+    <!-- F - ch_category _DanhMucCon-->
+    <string name="toolbardmcon">Danh Mục</string>
+
+    <!-- F - cart -->
+    <string name="toolbargiohang">Giỏ hàng</string>
+    <string name="checkcart">Giỏ hàng của bạn trống</string>
+    <string name="notecart">Ghi chú đơn hàng</string>
+    <string name="sum">Tổng:</string>
+    <string name="total">0đ</string>
+    <string name="footthebill">Thanh toán</string>
+
+    <!-- F - noti -->
+    <string name="toolbarnoti">Thông báo</string>
+    <string name="checknoti">Không có thông báo</string>
+
+    <!-- F - user -->
+    <string name="toolbaruser">Thông tin của bạn</string>
+    <string name="checkuser">Bạn chưa đăng nhập</string>
+    <string name="username">Tên đăng nhập:</string>
+    <string name="name1">Họ tên:</string>
+    <string name="birth1">Ngày sinh:</string>
+    <string name="address1">Địa chỉ:</string>
+    <string name="email1">Email:</string>
+    <string name="phone2">Số điện thoại:</string>
+    <string name="btnupdate">Chỉnh sửa thông tin</string>
+    <string name="btnchangepw">Đổi mật khẩu</string>
+    <string name="btnlogout">Đăng xuất</string>
+
+
+
+
+    <!-- Dialog ///////////////////////////////////////////////////////// -->
+    <!-- D - dangnhap -->
+    <string name="please">Bạn vui lòng đăng nhập</string>
+    <string name="dangnhap2">Đăng nhập</string>
+
+    <!-- D - change info -->
+    <string name="changeinfo">Thay đổi thông tin</string>
+    <string name="dateofbirth">Ngày sinh</string>
+    <string name="address">Địa chỉ</string>
+    <string name="email">Email</string>
+    <string name="phone1">Số điện thoại</string>
+    <string name="ok">Đồng ý</string>
+
+    <!-- D - change pw -->
+    <string name="changepw">Đổi mật khẩu</string>
+    <string name="oldpw">Mật khẩu cũ</string>
+    <string name="newpw">Mật khẩu mới</string>
+    <string name="renewpe">Nhập lại mật khẩu mới</string>
+
+
+
+
+    <!-- Row //////////////////////////////////////////////////////////// -->
+    <!-- R - item - danhmuccha -->
+    <string name="name_pro1">Tên sản phẩm</string>
+    <string name="contentImg5">img</string>
+
+    <!-- R - item - danhmuccon -->
+    <string name="contentImg6">img</string>
+    <string name="danh_muc">Tên danh mục</string>
+
+    <!-- R - item - giohang -->
+    <string name="contentImg7">img</string>
+    <string name="expnamepro">Ten san pham</string>
+    <string name="colorpro">Màu sắc:</string>
+    <string name="sizepro">Kích thước:</string>
+    <string name="expsize">XXL</string>
+    <string name="btndivide">-</string>
+    <string name="number">1</string>
+    <string name="btnplus">+</string>
+
+    <!-- R - item -sp -->
+    <string name="contentImg8">img</string>
+    <string name="namepro2">Tên sản phẩm</string>
+    <string name="price">Giá</string>
+
 </resources>

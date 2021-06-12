@@ -17,7 +17,7 @@
             android:id="@+id/txtToolBarSP_Act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Danh Mục"
+            android:text="@string/toolbardanhmuc"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:textSize="20sp"/>

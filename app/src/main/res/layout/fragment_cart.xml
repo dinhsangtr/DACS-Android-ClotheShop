@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Giỏ hàng"
+            android:text="@string/toolbargiohang"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -31,7 +31,7 @@
             android:id="@+id/txtThongBaoCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Giỏ hàng của bạn trống"
+            android:text="@string/checkcart"
             android:layout_gravity="center"
             android:textSize="15sp"
             android:textStyle="bold"/>
@@ -61,16 +61,17 @@
             android:layout_height="0dp"
             android:layout_weight="8"
             android:orientation="vertical"
-            android:weightSum="8">
+            android:weightSum="8"
+            tools:ignore="NestedWeights">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
-                android:text="Ghi chú đơn hàng"
+                android:text="@string/notecart"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginStart="10dp"/>
 
             <EditText
                 android:id="@+id/txtGhiChuCart"
@@ -79,7 +80,9 @@
                 android:layout_weight="5"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:autofillHints="@null"
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
         <LinearLayout
@@ -93,9 +96,9 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:text="Tổng:"
+                android:text="@string/sum"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -103,12 +106,13 @@
                 android:id="@+id/txtTongGiaCart"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="0đ"
+                android:text="@string/total"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlHardcoded" />
         </LinearLayout>
 
         <Button
@@ -120,7 +124,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/btn_press"
             android:backgroundTint="@null"
-            android:text="Thanh toán"
+            android:text="@string/footthebill"
             android:textAllCaps="false"
             app:backgroundTint="@null" />
     </LinearLayout>

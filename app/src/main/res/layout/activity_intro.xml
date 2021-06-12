@@ -16,7 +16,7 @@
         android:gravity="center"
         android:text="@string/welcome"
         android:textColor="@color/teal_700"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -36,7 +36,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ss" />
+                android:src="@drawable/ss"
+                android:contentDescription="@string/contentImg1" />
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 

@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="Thay đổi thông tin"
+            android:text="@string/changeinfo"
             android:textColor="@color/teal_700"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -35,10 +35,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:hint="Họ tên"
+            android:hint="@string/name"
             android:inputType="text"
             android:selectAllOnFocus="true"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/edtBirth"
@@ -46,10 +47,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:hint="Ngày sinh"
+            android:hint="@string/dateofbirth"
             android:inputType="date"
             android:selectAllOnFocus="true"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/edtAddress"
@@ -57,11 +59,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:hint="Địa chỉ"
+            android:hint="@string/address"
             android:inputType="text"
             android:selectAllOnFocus="true"
             android:textSize="18sp"
-           />
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/edtEmail"
@@ -69,10 +71,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="true"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/edtPhone"
@@ -80,10 +83,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:hint="Số điện thoại"
+            android:hint="@string/phone1"
             android:inputType="phone"
             android:selectAllOnFocus="true"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:autofillHints="" />
     </LinearLayout>
 
     <Button
@@ -92,7 +96,7 @@
         android:layout_height="50dp"
         android:background="@drawable/btn_press_1"
         android:backgroundTint="@null"
-        android:text="Đồng ý"
+        android:text="@string/ok"
         app:backgroundTint="@null"
         android:textAllCaps="false"
         android:layout_marginBottom="20dp"/>
