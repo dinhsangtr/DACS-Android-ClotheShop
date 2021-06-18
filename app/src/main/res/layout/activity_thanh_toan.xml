@@ -65,7 +65,8 @@
                         android:layout_weight="1"
                         android:text="@string/name1"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        />
 
                     <EditText
                         android:id="@+id/edtHoTenTT"
@@ -76,7 +77,8 @@
                         android:layout_weight="2"
                         android:hint="@null"
                         android:inputType="text"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        />
 
 
                 </LinearLayout>
@@ -167,7 +169,8 @@
                         android:inputType="phone"
                         android:selectAllOnFocus="true"
                         android:textSize="18sp"
-                        tools:ignore="TextFields" />
+                        tools:ignore="TextFields"
+                      />
                 </LinearLayout>
 
             </LinearLayout>

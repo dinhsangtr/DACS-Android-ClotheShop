@@ -20,7 +20,8 @@
         android:theme="@style/Theme.Shop"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-        <activity android:name=".activity.ChiTietDonHangActivity"></activity>
+        <activity android:name=".activity.TimKiemActivity"></activity>
+        <activity android:name=".activity.ChiTietDonHangActivity" />
         <activity
             android:name=".activity.ThanhToanActivity"
             android:windowSoftInputMode="adjustPan" />

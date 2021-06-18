@@ -1,5 +1,6 @@
 package com.doan.shop.fragment;
 
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -27,11 +28,7 @@ import com.doan.shop.util.CheckConnection;
 
 import java.text.DecimalFormat;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CartFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class CartFragment extends Fragment implements GioHangAdapter.ItemClickListener {
     ListView lvCart;
     TextView txtThongBaoCart;

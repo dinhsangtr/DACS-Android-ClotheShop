@@ -89,60 +89,55 @@ public class ThanhToanActivity extends AppCompatActivity {
                         && edtHoTenTT.getText().length() > 0
                         && edtHoTenTT.getText().length() > 0
                         && edtHoTenTT.getText().length() > 0) {
-
-
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                    Log.d("CartCount:", "" + MainActivity.listGioHang.size());
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, urlAddBill, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             if (Integer.parseInt(response) > 0) {
                                 Log.d("R1: ", response);
+                                for (int i = 0; i < MainActivity.listGioHang.size(); i++) {
+                                    RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                                    int finalI = i;
+                                    final String id_san_pham = String.valueOf(MainActivity.listGioHang.get(finalI).getSanpham().getId_san_pham());
+                                    final String so_luong = String.valueOf(MainActivity.listGioHang.get(finalI).getSoluong());
+                                    final String gia_ban = String.valueOf(MainActivity.listGioHang.get(finalI).getTonggia());
 
-                                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                                StringRequest request = new StringRequest(Request.Method.POST, urlAddBillDetail, new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-                                        Log.d("R2: ", response);
-                                        if (response.equals("1")) {
-                                            MainActivity.listGioHang.clear();
-                                            Toast.makeText(getApplicationContext(), "Thanh toán thành công", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(ThanhToanActivity.this, MainActivity.class);
-                                            startActivity(intent);
+                                    Log.d("finalI: ", finalI + "");
+                                    Log.d("id_san_pham", id_san_pham);
+                                    Log.d("so_luong", so_luong);
+                                    Log.d("gia_ban", gia_ban);
+
+                                    StringRequest request = new StringRequest(Request.Method.POST, urlAddBillDetail, new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.d("RPRP:", finalI + ": " + response);
                                         }
-                                    }
-                                }, new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
+                                    }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
 
-                                    }
-                                }) {
-                                    @Nullable
-                                    @org.jetbrains.annotations.Nullable
-                                    @Override
-                                    protected Map<String, String> getParams() throws AuthFailureError {
-                                        /*JSONArray jsonArray = new JSONArray();
-                                        for (int i = 0; i < MainActivity.listGioHang.size(); i++) {
-                                            JSONObject jsonObject = new JSONObject();
-                                            try {
-                                                jsonObject.put("id_san_pham", MainActivity.listGioHang.get(0).getSanpham().getId_san_pham());
-                                                jsonObject.put("so_luong", MainActivity.listGioHang.get(0).getSoluong());
-                                                jsonObject.put("gia_ban", MainActivity.listGioHang.get(0).getTonggia());
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                            }
-                                            jsonArray.put(jsonObject);
                                         }
-                                        HashMap<String, String> hashMap = new HashMap<String, String>();
-                                        hashMap.put("json", jsonArray.toString());*/
-
-                                        HashMap<String, String> hashMap = new HashMap<String, String>();
-                                        hashMap.put("id_san_pham", String.valueOf(MainActivity.listGioHang.get(0).getSanpham().getId_san_pham()));
-                                        hashMap.put("so_luong", String.valueOf(MainActivity.listGioHang.get(0).getSoluong()));
-                                        hashMap.put("gia_ban", String.valueOf(MainActivity.listGioHang.get(0).getTonggia()));
-                                        return hashMap;
-                                    }
-                                };
-                                queue.add(request);
+                                    }) {
+                                        @Nullable
+                                        @org.jetbrains.annotations.Nullable
+                                        @Override
+                                        protected Map<String, String> getParams() throws AuthFailureError {
+                                            HashMap<String, String> hashMap = new HashMap<String, String>();
+                                            hashMap.put("id_san_pham", id_san_pham);
+                                            hashMap.put("so_luong", so_luong);
+                                            hashMap.put("gia_ban", gia_ban);
+                                            return hashMap;
+                                        }
+                                    };
+                                    queue.add(request);
+                                }
+                                if (response.equals("1")) {
+                                    MainActivity.listGioHang.clear();
+                                    Toast.makeText(getApplicationContext(), "Xác nhận đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(ThanhToanActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                }
                             } else {
                                 Toast.makeText(getApplicationContext(), "Thanh toán thất bại", Toast.LENGTH_SHORT).show();
                             }

@@ -1,10 +1,7 @@
 package com.doan.shop.adapter;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
@@ -15,8 +12,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.doan.shop.R;
 import com.doan.shop.activity.MainActivity;
@@ -31,7 +26,7 @@ import java.util.ArrayList;
 public class GioHangAdapter extends BaseAdapter {
     Context context;
     ArrayList<GioHang> listGioHang;
-    private GioHangAdapter.ItemClickListener clickListener;
+    private final GioHangAdapter.ItemClickListener clickListener;
 
     public GioHangAdapter(Context context, ArrayList<GioHang> listGioHang, GioHangAdapter.ItemClickListener clickListener) {
         this.context = context;

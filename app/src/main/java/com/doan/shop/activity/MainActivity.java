@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        /*
         if (doubleBackToExit) {
             super.onBackPressed();
             return;
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 doubleBackToExit = false;
                 finish();
             }
-        }, 2000);
+        }, 2000);*/
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

@@ -64,7 +64,7 @@
     <string name="tvTT1">Phương thức thanh toán</string>
     <string name="tvDeli">Phương thức vận chuyển</string>
     <string name="tvSale">Mã khuyến mãi</string>
-    <string name="btnTT">Thanh Toán</string>
+    <string name="btnTT">Xác nhận đơn hàng</string>
     <string name="rdoCOD">Thanh toán bằng tiền mặt khi nhân hàng</string>
     <string name="rdoZalo">Ví ZaloPay</string>
     <string name="rdoAtm">Thẻ ATM nội địa/ Internet Banking</string>
@@ -82,8 +82,6 @@
 
     <!-- A - ChiTietDonHang -->
     <string name="toolbarCTDH">Chi tiết đơn hàng</string>
-
-
 
 
     <!-- Fragment ///////////////////////////////////////////////////////// -->

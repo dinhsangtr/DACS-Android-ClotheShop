@@ -46,31 +46,58 @@
             android:textSize="25sp"
             android:textStyle="bold" />
 
-
-        <EditText
-            android:id="@+id/txtUsername"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:hint="@string/prompt_email"
-            android:inputType="text"
-            android:selectAllOnFocus="true"
-            android:textSize="18sp"/>
+            app:boxStrokeColor="#ff03dac5"
+            app:endIconTint="#ff03dac5"
+            app:hintTextColor="#ff03dac5"
+            app:startIconTint="@color/dark_gray"
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
 
-        <EditText
-            android:id="@+id/txtPassword"
+
+            <EditText
+                android:id="@+id/txtUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/white"
+                android:hint="@string/prompt_email"
+                android:inputType="text"
+                android:selectAllOnFocus="true"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="24dp"
-            android:hint="@string/prompt_password"
-            android:imeActionLabel="@string/action_sign_in_short"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            android:textSize="18sp"/>
+            app:passwordToggleEnabled="true"
+            app:boxStrokeColor="#ff03dac5"
+            app:endIconTint="#ff03dac5"
+            app:hintTextColor="#ff03dac5"
+            app:startIconTint="@color/dark_gray"
+            app:startIconDrawable="@drawable/ic_baseline_lock_24">
+
+            <EditText
+                android:id="@+id/txtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/white"
+                android:ems="5"
+                android:hint="@string/prompt_password"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:selectAllOnFocus="true"
+                android:textSize="18sp"
+                android:outlineSpotShadowColor="@color/bgBottomNavigation"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
 
